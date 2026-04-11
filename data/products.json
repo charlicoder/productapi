@@ -1,0 +1,467 @@
+{
+    "pagination": {
+        "count": 5,
+        "total_pages": 1,
+        "current_page": 1,
+        "page_size": 20,
+        "next": null,
+        "previous": null
+    },
+    "results": [
+        {
+            "id": 5,
+            "product_asin": "B0B3XNPMQ8",
+            "slug": "chaussures-de-course-nike-react-infinity-run-flyknit-3-pour-homme",
+            "title": {
+                "en": "Nike React Infinity Run Flyknit 3 Men's Road Running Shoes",
+                "ar": "حذاء الجري نايكي ريأكت إنفينيتي ران فلاينت 3 للرجال",
+                "fr": "Chaussures de course Nike React Infinity Run Flyknit 3 pour homme"
+            },
+            "description": {
+                "en": "Built for long-distance running, the Nike React Infinity Run 3 provides a smooth, stable ride with Nike React foam that delivers responsive cushioning.",
+                "ar": "صُمم للجري لمسافات طويلة، يوفر نايكي ريأكت إنفينيتي ران 3 ركوبًا سلسًا ومستقرًا مع رغوة نايكي ريأكت التي توفر توسيدًا متجاوبًا.",
+                "fr": "Conçue pour la course longue distance, la Nike React Infinity Run 3 offre une conduite fluide et stable avec la mousse Nike React pour un amorti réactif."
+            },
+            "platform": "amazon",
+            "product_type": "sports",
+            "af_link": "https://www.amazon.com/dp/B0B3XNPMQ8?tag=affiliate-20",
+            "features": [
+                {
+                    "key": "Material",
+                    "value": "Mesh upper"
+                },
+                {
+                    "key": "Sole",
+                    "value": "Rubber"
+                },
+                {
+                    "key": "Closure",
+                    "value": "Lace-up"
+                },
+                {
+                    "key": "Technology",
+                    "value": "Nike React foam"
+                },
+                {
+                    "key": "Weight",
+                    "value": "283g"
+                }
+            ],
+            "images": [
+                {
+                    "image": "https://m.media-amazon.com/images/I/71jeoX0rMBL._AC_SX695_.jpg",
+                    "alt_text": "Nike React Infinity Run Flyknit 3",
+                    "is_featured": true,
+                    "order": 1
+                }
+            ],
+            "videos": [],
+            "meta": {
+                "page_header": "Nike React Infinity Run Flyknit 3",
+                "meta_description": "Nike React Infinity Run Flyknit 3 running shoes with React foam for a smooth ride.",
+                "meta_keywords": "Nike, running shoes, React, Flyknit, athletic",
+                "open_graph_meta_description": "Run with confidence in Nike React Infinity.",
+                "product_tags": "#Nike #Running #Flyknit"
+            },
+            "brand": {
+                "brand_name": "Nike",
+                "brand_url": "https://www.nike.com/",
+                "brand_logo": "https://www.nike.com/logo.png"
+            },
+            "category": {
+                "name": "Sports et Plein Air",
+                "icon": "running"
+            },
+            "featured_image": "https://m.media-amazon.com/images/I/71jeoX0rMBL._AC_SX695_.jpg",
+            "current_price": "$89.97",
+            "price_info": {
+                "price": "$89.97",
+                "regular_price": "$130.00",
+                "cost_savings": 40,
+                "discount_percent": "-31%",
+                "savings_percent": "31%"
+            },
+            "rating": "4.4",
+            "tags_list": [
+                "Sports",
+                "Running",
+                "Nike",
+                "Shoes",
+                "Athletic",
+                "Training"
+            ],
+            "is_featured": true,
+            "created_at": "2025-12-28T14:10:26.084570Z"
+        },
+        {
+            "id": 4,
+            "product_asin": "B09XS7JWHH",
+            "slug": "casque-sony-wh-1000xm5-sans-fil-avec-reduction-de-bruit-leader",
+            "title": {
+                "en": "Sony WH-1000XM5 Wireless Industry Leading Noise Cancelling Headphones",
+                "ar": "سماعات سوني WH-1000XM5 اللاسلكية الرائدة في إلغاء الضوضاء",
+                "fr": "Casque Sony WH-1000XM5 sans fil avec réduction de bruit leader"
+            },
+            "description": {
+                "en": "Experience unparalleled sound quality with Sony's industry-leading noise cancellation technology. Features 30-hour battery life and crystal-clear hands-free calling.",
+                "ar": "استمتع بجودة صوت لا مثيل لها مع تقنية إلغاء الضوضاء الرائدة من سوني. تتميز بعمر بطارية 30 ساعة ومكالمات واضحة.",
+                "fr": "Découvrez une qualité sonore inégalée avec la technologie de réduction de bruit leader de Sony. Autonomie de 30 heures et appels mains libres cristallins."
+            },
+            "platform": "amazon",
+            "product_type": "electronics",
+            "af_link": "https://www.amazon.com/dp/B09XS7JWHH?tag=affiliate-20",
+            "features": [
+                {
+                    "key": "Type",
+                    "value": "Over-Ear Wireless"
+                },
+                {
+                    "key": "Noise Cancellation",
+                    "value": "Industry Leading ANC"
+                },
+                {
+                    "key": "Battery Life",
+                    "value": "Up to 30 hours"
+                },
+                {
+                    "key": "Connectivity",
+                    "value": "Bluetooth 5.2, 3.5mm"
+                },
+                {
+                    "key": "Weight",
+                    "value": "250g"
+                }
+            ],
+            "images": [
+                {
+                    "image": "https://m.media-amazon.com/images/I/61vJtKbAssL._AC_SX679_.jpg",
+                    "alt_text": "Sony WH-1000XM5 Black",
+                    "is_featured": true,
+                    "order": 1
+                }
+            ],
+            "videos": [
+                {
+                    "video": "https://www.amazon.com/sony-xm5-video",
+                    "title": "Sony WH-1000XM5 Review",
+                    "is_featured": true,
+                    "order": 1
+                }
+            ],
+            "meta": {
+                "page_header": "Sony WH-1000XM5 Wireless Headphones",
+                "meta_description": "Sony WH-1000XM5 wireless noise cancelling headphones with industry-leading ANC.",
+                "meta_keywords": "Sony, WH-1000XM5, headphones, noise cancelling, wireless",
+                "open_graph_meta_description": "Experience industry-leading noise cancellation.",
+                "product_tags": "#Sony #WH1000XM5 #Headphones"
+            },
+            "brand": {
+                "brand_name": "Sony",
+                "brand_url": "https://www.sony.com/",
+                "brand_logo": "https://www.sony.com/logo.png"
+            },
+            "category": {
+                "name": "Électronique",
+                "icon": "laptop"
+            },
+            "featured_image": "https://m.media-amazon.com/images/I/61vJtKbAssL._AC_SX679_.jpg",
+            "current_price": "$328.00",
+            "price_info": {
+                "price": "$328.00",
+                "regular_price": "$399.99",
+                "cost_savings": 72,
+                "discount_percent": "-18%",
+                "savings_percent": "18%"
+            },
+            "rating": "4.5",
+            "tags_list": [
+                "Electronics",
+                "Headphones",
+                "Sony",
+                "Wireless",
+                "Noise Cancelling",
+                "Bluetooth"
+            ],
+            "is_featured": false,
+            "created_at": "2025-12-28T14:10:26.066016Z"
+        },
+        {
+            "id": 3,
+            "product_asin": "B0CMDLHGK4",
+            "slug": "samsung-galaxy-s24-ultra-256-go-titane-noir",
+            "title": {
+                "en": "Samsung Galaxy S24 Ultra (256GB) - Titanium Black",
+                "ar": "سامسونج جالاكسي S24 الترا (256 جيجابايت) - تيتانيوم أسود",
+                "fr": "Samsung Galaxy S24 Ultra (256 Go) - Titane Noir"
+            },
+            "description": {
+                "en": "Galaxy S24 Ultra brings you the ultimate Galaxy experience with Galaxy AI features, a built-in S Pen, and the most powerful camera yet.",
+                "ar": "يقدم لك جالاكسي S24 الترا تجربة جالاكسي المثالية مع ميزات Galaxy AI وقلم S Pen مدمج وأقوى كاميرا حتى الآن.",
+                "fr": "Le Galaxy S24 Ultra vous offre l'expérience Galaxy ultime avec les fonctionnalités Galaxy AI, un S Pen intégré et l'appareil photo le plus puissant à ce jour."
+            },
+            "platform": "amazon",
+            "product_type": "electronics",
+            "af_link": "https://www.amazon.com/dp/B0CMDLHGK4?tag=affiliate-20",
+            "features": [
+                {
+                    "key": "Display",
+                    "value": "6.8\" Dynamic AMOLED 2X"
+                },
+                {
+                    "key": "Chip",
+                    "value": "Snapdragon 8 Gen 3"
+                },
+                {
+                    "key": "Storage",
+                    "value": "256GB"
+                },
+                {
+                    "key": "Camera",
+                    "value": "200MP Main + 12MP Ultra Wide"
+                },
+                {
+                    "key": "S Pen",
+                    "value": "Included"
+                }
+            ],
+            "images": [
+                {
+                    "image": "https://m.media-amazon.com/images/I/71Sa3dqTqzL._AC_SX679_.jpg",
+                    "alt_text": "Samsung Galaxy S24 Ultra Titanium Black",
+                    "is_featured": true,
+                    "order": 1
+                }
+            ],
+            "videos": [],
+            "meta": {
+                "page_header": "Samsung Galaxy S24 Ultra - AI Powered",
+                "meta_description": "Samsung Galaxy S24 Ultra with Galaxy AI features, 200MP camera, and S Pen included.",
+                "meta_keywords": "Samsung, Galaxy S24 Ultra, smartphone, AI, S Pen",
+                "open_graph_meta_description": "Experience Galaxy AI with the S24 Ultra.",
+                "product_tags": "#Samsung #GalaxyS24Ultra #AI"
+            },
+            "brand": {
+                "brand_name": "Samsung",
+                "brand_url": "https://www.samsung.com/",
+                "brand_logo": "https://www.samsung.com/logo.png"
+            },
+            "category": {
+                "name": "Électronique",
+                "icon": "laptop"
+            },
+            "featured_image": "https://m.media-amazon.com/images/I/71Sa3dqTqzL._AC_SX679_.jpg",
+            "current_price": "$899.99",
+            "price_info": {
+                "price": "$899.99",
+                "regular_price": "$1199.99",
+                "cost_savings": 300,
+                "discount_percent": "-25%",
+                "savings_percent": "25%"
+            },
+            "rating": "4.6",
+            "tags_list": [
+                "Electronics",
+                "Smartphones",
+                "Samsung",
+                "Galaxy",
+                "Android",
+                "S Pen",
+                "AI"
+            ],
+            "is_featured": true,
+            "created_at": "2025-12-28T14:10:26.042248Z"
+        },
+        {
+            "id": 2,
+            "product_asin": "B0CHOMQ1LV",
+            "slug": "apple-iphone-15-pro-256-go-titane-naturel",
+            "title": {
+                "en": "Apple iPhone 15 Pro (256GB) - Natural Titanium",
+                "ar": "آيفون 15 برو من آبل (256 جيجابايت) - تيتانيوم طبيعي",
+                "fr": "Apple iPhone 15 Pro (256 Go) - Titane Naturel"
+            },
+            "description": {
+                "en": "iPhone 15 Pro features a strong and light titanium design with the A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.",
+                "ar": "يتميز آيفون 15 برو بتصميم تيتانيوم قوي وخفيف مع شريحة A17 Pro وزر الإجراء القابل للتخصيص وأقوى نظام كاميرا آيفون على الإطلاق.",
+                "fr": "L'iPhone 15 Pro présente un design en titane solide et léger avec la puce A17 Pro, un bouton Action personnalisable et le système de caméra iPhone le plus puissant jamais conçu."
+            },
+            "platform": "amazon",
+            "product_type": "electronics",
+            "af_link": "https://www.amazon.com/dp/B0CHOMQ1LV?tag=affiliate-20",
+            "features": [
+                {
+                    "key": "Display",
+                    "value": "6.1\" Super Retina XDR"
+                },
+                {
+                    "key": "Chip",
+                    "value": "A17 Pro"
+                },
+                {
+                    "key": "Storage",
+                    "value": "256GB"
+                },
+                {
+                    "key": "Camera",
+                    "value": "48MP Main + 12MP Ultra Wide"
+                },
+                {
+                    "key": "Battery",
+                    "value": "Up to 23 hours video playback"
+                }
+            ],
+            "images": [
+                {
+                    "image": "https://m.media-amazon.com/images/I/81SigpJN1KL._AC_SX679_.jpg",
+                    "alt_text": "iPhone 15 Pro Natural Titanium",
+                    "is_featured": true,
+                    "order": 1
+                },
+                {
+                    "image": "https://m.media-amazon.com/images/I/81SigpJN1KL._AC_SX679_2.jpg",
+                    "alt_text": "iPhone 15 Pro Back View",
+                    "is_featured": false,
+                    "order": 2
+                }
+            ],
+            "videos": [
+                {
+                    "video": "https://www.amazon.com/iphone15pro-video",
+                    "title": "iPhone 15 Pro Features",
+                    "is_featured": true,
+                    "order": 1
+                }
+            ],
+            "meta": {
+                "page_header": "Apple iPhone 15 Pro - Natural Titanium",
+                "meta_description": "Apple iPhone 15 Pro with A17 Pro chip, 48MP camera system, and titanium design. Available in 256GB.",
+                "meta_keywords": "iPhone 15 Pro, Apple, smartphone, A17 Pro, titanium",
+                "open_graph_meta_description": "Discover the iPhone 15 Pro with revolutionary features.",
+                "product_tags": "#Apple #iPhone15Pro #Smartphone"
+            },
+            "brand": {
+                "brand_name": "Apple",
+                "brand_url": "https://www.apple.com/",
+                "brand_logo": "https://www.apple.com/logo.png"
+            },
+            "category": {
+                "name": "Électronique",
+                "icon": "laptop"
+            },
+            "featured_image": "https://m.media-amazon.com/images/I/81SigpJN1KL._AC_SX679_.jpg",
+            "current_price": "$999.00",
+            "price_info": {
+                "price": "$999.00",
+                "regular_price": "$1099.00",
+                "cost_savings": 100,
+                "discount_percent": "-9%",
+                "savings_percent": "9%"
+            },
+            "rating": "4.8",
+            "tags_list": [
+                "Electronics",
+                "Smartphones",
+                "Apple",
+                "iPhone",
+                "5G",
+                "Titanium"
+            ],
+            "is_featured": true,
+            "created_at": "2025-12-28T14:10:26.021737Z"
+        },
+        {
+            "id": 1,
+            "product_asin": "B0CS2X23RY",
+            "slug": "sac-fourre-tout-leger-bagsmart-pour-femmes-sac-a-bandouliere-matelasse-pour-voyage-travail-sport",
+            "title": {
+                "en": "BAGSMART Lightweight Puffy Tote Bag for Women | Quilted Shoulder Bag for Travel, Work, Gym",
+                "ar": "حقيبة توت خفيفة الوزن من باجسمارت للنساء | حقيبة كتف مبطنة للسفر والعمل والصالة الرياضية",
+                "fr": "Sac fourre-tout léger BAGSMART pour femmes | Sac à bandoulière matelassé pour voyage, travail, sport"
+            },
+            "description": {
+                "en": "This BAGSMART Tote Bag for women is the perfect companion for travel, work, or the gym. With multiple compartments and a quilted design, it offers a blend of style and functionality. Made from polyester fibre, it is lightweight and machine washable, making it an ideal choice for everyday use.",
+                "ar": "حقيبة توت باجسمارت للنساء هي الرفيق المثالي للسفر أو العمل أو الصالة الرياضية. مع حجرات متعددة وتصميم مبطن، توفر مزيجًا من الأناقة والوظائف.",
+                "fr": "Ce sac fourre-tout BAGSMART pour femmes est le compagnon idéal pour les voyages, le travail ou la salle de sport. Avec plusieurs compartiments et un design matelassé, il offre un mélange de style et de fonctionnalité."
+            },
+            "platform": "amazon",
+            "product_type": "clothing",
+            "af_link": "https://www.amazon.com/dp/B0CS2X23RY?tag=affiliate-20",
+            "features": [
+                {
+                    "key": "Fabric type",
+                    "value": "Polyester fibre"
+                },
+                {
+                    "key": "Care instructions",
+                    "value": "Machine Wash"
+                },
+                {
+                    "key": "Origin",
+                    "value": "Imported"
+                },
+                {
+                    "key": "Closure type",
+                    "value": "Zipper"
+                }
+            ],
+            "images": [
+                {
+                    "image": "https://m.media-amazon.com/images/I/51k6GQbjoVL._AC_SY550_.jpg",
+                    "alt_text": "BAGSMART Tote Bag Front View",
+                    "is_featured": true,
+                    "order": 1
+                },
+                {
+                    "image": "https://m.media-amazon.com/images/I/51k6GQbjoVL._AC_SY550_2.jpg",
+                    "alt_text": "BAGSMART Tote Bag Side View",
+                    "is_featured": false,
+                    "order": 2
+                }
+            ],
+            "videos": [
+                {
+                    "video": "https://www.amazon.com/f5aae4a0-60e1-484b-8473-802c0e45ca6e",
+                    "title": "Product Overview",
+                    "is_featured": true,
+                    "order": 1
+                }
+            ],
+            "meta": {
+                "page_header": "BAGSMART Lightweight Puffy Tote Bag for Women",
+                "meta_description": "Explore the BAGSMART lightweight puffy tote bag for women. Perfect for travel, work, gym. Features multiple compartments, quilted design, and machine washable.",
+                "meta_keywords": "BAGSMART, tote bag, women bag, travel bag, work bag, gym bag, quilted shoulder bag",
+                "open_graph_meta_description": "Discover the BAGSMART tote bag for women. Lightweight, with multiple compartments and a quilted design.",
+                "product_tags": "#BAGSMART #ToteBag #WomensBag #TravelBag"
+            },
+            "brand": {
+                "brand_name": "BAGSMART",
+                "brand_url": "https://www.bagsmart.com/",
+                "brand_logo": "https://www.bagsmart.com/logo.png"
+            },
+            "category": {
+                "name": "Mode Femme",
+                "icon": "dress"
+            },
+            "featured_image": "https://m.media-amazon.com/images/I/51k6GQbjoVL._AC_SY550_.jpg",
+            "current_price": "$26.59",
+            "price_info": {
+                "price": "$26.59",
+                "regular_price": "$31.99",
+                "cost_savings": 5,
+                "discount_percent": "-17%",
+                "savings_percent": "17%"
+            },
+            "rating": "4.7",
+            "tags_list": [
+                "Women",
+                "Handbags & Wallets",
+                "Totes",
+                "Travel",
+                "Work",
+                "Gym"
+            ],
+            "is_featured": true,
+            "created_at": "2025-12-28T14:10:25.997338Z"
+        }
+    ]
+}
