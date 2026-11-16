@@ -1,0 +1,8 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<p>Upload a JSON file containing a list of products (or a single product). Products are matched by <code>asin</code>: existing ones are updated, new ones created.</p>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Import" class="default">
+</form>
+{% endblock %}

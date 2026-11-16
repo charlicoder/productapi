@@ -1,0 +1,25 @@
+{% extends "admin/base_site.html" %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+  <a href="{% url 'admin:catalog_product_changelist' %}">Products</a> &rsaquo;
+  <a href="{% url 'admin:catalog_product_change' product.pk %}">{{ product.title|truncatechars:40 }}</a> &rsaquo; Videos
+</div>
+{% endblock %}
+{% block content %}
+<p><a href="{% url 'admin:catalog_product_changelist' %}">&larr; Back to products</a> ·
+   <a href="{% url 'admin:catalog_product_images' product.pk %}">Images</a></p>
+{% for heading, urls in groups %}
+  <h2 style="margin-top:24px">{{ heading }} <small style="font-weight:normal">— {{ urls|length }} video{{ urls|length|pluralize }}</small></h2>
+  <div style="display:flex;flex-wrap:wrap;gap:18px">
+    {% for u in urls %}
+      <div style="width:320px">
+        <video src="{{ u }}" controls preload="metadata" style="width:320px;max-height:320px;border-radius:8px;background:#000"></video>
+        <div style="font-size:12px;margin-top:4px">Video {{ forloop.counter }} · <a href="{{ u }}" target="_blank" rel="noopener">open link</a></div>
+      </div>
+    {% endfor %}
+  </div>
+{% empty %}
+  <p>No videos for this product.</p>
+{% endfor %}
+{% endblock %}

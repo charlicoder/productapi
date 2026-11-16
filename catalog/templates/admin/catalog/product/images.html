@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+  <a href="{% url 'admin:catalog_product_changelist' %}">Products</a> &rsaquo;
+  <a href="{% url 'admin:catalog_product_change' product.pk %}">{{ product.title|truncatechars:40 }}</a> &rsaquo; Images
+</div>
+{% endblock %}
+{% block content %}
+<p><a href="{% url 'admin:catalog_product_changelist' %}">&larr; Back to products</a> ·
+   <a href="{% url 'admin:catalog_product_videos' product.pk %}">Videos</a></p>
+{% for variant, images in groups %}
+  <h2 style="margin-top:24px">{{ variant.label }} <small style="font-weight:normal">— {{ images|length }} image{{ images|length|pluralize }}</small></h2>
+  <div style="display:flex;flex-wrap:wrap;gap:14px">
+    {% for im in images %}
+      <figure style="margin:0;width:200px">
+        <a href="{{ im.full_size|default:im.url }}" target="_blank" rel="noopener">
+          <img src="{{ im.url }}" loading="lazy" alt="" style="width:200px;height:250px;object-fit:cover;border-radius:8px;background:#eee">
+        </a>
+        <figcaption style="font-size:11px;color:#666;margin-top:4px">#{{ forloop.counter }}{% if im.slot %} · {{ im.slot }}{% endif %} ·
+          <a href="{{ im.url }}" target="_blank" rel="noopener">open</a></figcaption>
+      </figure>
+    {% endfor %}
+  </div>
+{% empty %}
+  <p>No images for this product.</p>
+{% endfor %}
+{% endblock %}
