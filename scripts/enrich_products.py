@@ -53,6 +53,7 @@ AR_SYSTEM = """You are a professional English-to-Arabic e-commerce translator an
 Translate each product's title_en and subtitle_en into natural, fluent Modern Standard Arabic suitable for an online store.
 - Do a marketing-quality adaptation, not a word-for-word translation; keep it concise and engaging, similar length to the English.
 - Keep brand names in Latin letters exactly as written. Keep model names/numbers as-is.
+- Never mix Arabic and Latin letters inside one word (e.g. not "بلazer"): translate product words fully into Arabic (بليزر), leaving only brand/model names in Latin.
 - Use Arabic punctuation naturally (the Arabic comma "،"). No emoji. No diacritics (tashkeel). Plain text only.
 
 Return ONLY a JSON array, one object per input product, in the same order:
