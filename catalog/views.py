@@ -18,7 +18,7 @@ class ProductList(generics.ListAPIView):
         qs = _active()
         q = self.request.query_params.get("q", "").strip()
         if q:
-            qs = qs.filter(Q(title__icontains=q) | Q(brand__icontains=q) | Q(asin__icontains=q))
+            qs = qs.filter(Q(title__icontains=q) | Q(title_en__icontains=q) | Q(title_ar__icontains=q) | Q(brand__icontains=q) | Q(asin__icontains=q))
         cat = self.request.query_params.get("category", "").strip()
         if cat:
             qs = qs.filter(category=cat)

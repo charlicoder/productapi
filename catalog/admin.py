@@ -50,9 +50,9 @@ class VariantInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("title", "images_gallery", "videos_links", "category", "brand", "asin", "is_active", "updated_at")
+    list_display = ("display_title", "images_gallery", "videos_links", "category", "brand", "asin", "is_active", "updated_at")
     list_filter = ("category", "is_active", "affiliate_site", "brand")
-    search_fields = ("title", "asin", "brand", "category_path")
+    search_fields = ("title", "title_en", "title_ar", "asin", "brand", "category_path")
     list_editable = ("is_active",)
     prepopulated_fields = {"slug": ("title",)}
     inlines = [VariantInline]
@@ -65,6 +65,10 @@ class ProductAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related("variants__images")
+
+    @admin.display(description="Title", ordering="title_en")
+    def display_title(self, obj):
+        return obj.title_en or obj.title
 
     @staticmethod
     def _all_videos(obj):

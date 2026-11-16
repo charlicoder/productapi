@@ -14,8 +14,13 @@ class Product(models.Model):
 
     asin = models.CharField(max_length=20, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
+    # Original scraped text (kept as the fallback) + AI-polished, localized copy.
     title = models.CharField(max_length=500)
     subtitle = models.TextField(blank=True)
+    title_en = models.CharField("title (English)", max_length=200, blank=True)
+    subtitle_en = models.TextField("subtitle (English)", blank=True)
+    title_ar = models.CharField("title (Arabic)", max_length=300, blank=True)
+    subtitle_ar = models.TextField("subtitle (Arabic)", blank=True)
     brand = models.CharField(max_length=200, blank=True, db_index=True)
     url = models.URLField(max_length=1000, blank=True, help_text="Original product page")
     affiliate_link = models.URLField(max_length=1000)
@@ -37,8 +42,17 @@ class Product(models.Model):
     class Meta:
         ordering = ["-created_at", "-id"]
 
+    def localized(self, field, lang):
+        """title/subtitle in `lang`, falling back ar -> en -> original."""
+        chain = {"ar": ("ar", "en"), "en": ("en",)}.get(lang, ("en",))
+        for code in chain:
+            v = getattr(self, f"{field}_{code}")
+            if v:
+                return v
+        return getattr(self, field)
+
     def __str__(self):
-        return self.title
+        return self.title_en or self.title
 
 
 class Variant(models.Model):

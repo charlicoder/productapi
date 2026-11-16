@@ -64,15 +64,20 @@ def _import_one(data):
         videos=_list(data.get("videos")),
     )
     existing = Product.objects.filter(asin=asin).first()
+    # Localized copy (from scripts/enrich_products.py). Only overwrite what the file provides.
+    for k in ("title_en", "subtitle_en", "title_ar", "subtitle_ar"):
+        if data.get(k):
+            defaults[k] = data[k]
     explicit = (data.get("category") or "").strip()
     valid = {c for c, _ in CATEGORY_CHOICES}
     if explicit in valid:
         defaults["category"] = explicit
     elif not existing or not existing.category:  # never clobber a category edited in admin
         defaults["category"] = detect_category(defaults["category_path"], title)
-    product, created = Product.objects.update_or_create(
-        asin=asin, defaults={**defaults, "slug": _make_slug(title, asin)}
-    )
+    # Keep an existing slug stable (URLs/SEO); new products slug from the polished English title.
+    if not existing:
+        defaults["slug"] = _make_slug(defaults.get("title_en") or title, asin)
+    product, created = Product.objects.update_or_create(asin=asin, defaults=defaults)
 
     # Replace the variant tree so re-importing a refreshed scrape stays consistent.
     product.variants.all().delete()

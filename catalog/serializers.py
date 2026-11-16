@@ -20,14 +20,43 @@ class VariantSerializer(serializers.ModelSerializer):
         fields = ("id", "asin", "label", "color", "style", "price", "swatch_image", "unavailable", "videos", "images")
 
 
-class ProductListSerializer(serializers.ModelSerializer):
+class LocalizedMixin:
+    def _lang(self):
+        req = self.context.get("request")
+        return (req.query_params.get("lang", "en") if req else "en").lower()[:2]
+
+    def get_title(self, obj):
+        return obj.localized("title", self._lang())
+
+    def get_subtitle(self, obj):
+        return obj.localized("subtitle", self._lang())
+
+    # Explicit per-language fields so clients (and caches) don't depend on ?lang=.
+    # English falls back to the original scraped text; Arabic stays empty if not translated.
+    def get_title_en(self, obj):
+        return obj.title_en or obj.title
+
+    def get_title_ar(self, obj):
+        return obj.title_ar
+
+    def get_subtitle_en(self, obj):
+        return obj.subtitle_en or obj.subtitle
+
+    def get_subtitle_ar(self, obj):
+        return obj.subtitle_ar
+
+
+class ProductListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """Card payload: title + a handful of images only."""
 
+    title = serializers.SerializerMethodField()
+    title_en = serializers.SerializerMethodField()
+    title_ar = serializers.SerializerMethodField()
     images = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ("slug", "title", "images")
+        fields = ("slug", "title", "title_en", "title_ar", "images")
 
     def get_images(self, obj):
         # Needs prefetch of variants__images. First image of each variant first (variety), then the rest.
@@ -47,12 +76,18 @@ class ProductListSerializer(serializers.ModelSerializer):
         return out
 
 
-class ProductDetailSerializer(serializers.ModelSerializer):
+class ProductDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
+    title = serializers.SerializerMethodField()
+    subtitle = serializers.SerializerMethodField()
+    title_en = serializers.SerializerMethodField()
+    title_ar = serializers.SerializerMethodField()
+    subtitle_en = serializers.SerializerMethodField()
+    subtitle_ar = serializers.SerializerMethodField()
     variants = VariantSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
         fields = (
-            "slug", "asin", "title", "subtitle", "brand", "affiliate_link", "affiliate_site",
+            "slug", "asin", "title", "subtitle", "title_en", "title_ar", "subtitle_en", "subtitle_ar", "brand", "affiliate_link", "affiliate_site",
             "category_path", "categories", "tags", "sizes", "videos", "variants",
         )
