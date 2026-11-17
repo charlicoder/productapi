@@ -50,10 +50,10 @@ class VariantInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("display_title", "images_gallery", "videos_links", "category", "brand", "asin", "is_active", "updated_at")
-    list_filter = ("category", "is_active", "affiliate_site", "brand")
+    list_display = ("display_title", "images_gallery", "videos_links", "category", "is_featured", "brand", "asin", "is_active", "updated_at")
+    list_filter = ("category", "is_featured", "is_active", "affiliate_site", "brand")
     search_fields = ("title", "title_en", "title_ar", "asin", "brand", "category_path")
-    list_editable = ("is_active",)
+    list_editable = ("is_active", "is_featured")
     prepopulated_fields = {"slug": ("title",)}
     inlines = [VariantInline]
     readonly_fields = ("video_preview",)

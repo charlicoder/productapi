@@ -4,7 +4,7 @@ from django.db import models
 CATEGORY_CHOICES = [
     ("apparel", "Apparel"),
     ("footwear-bags", "Footwear & Bags"),
-    ("tech-audio", "Tech & Audio"),
+    ("beauty-health", "Beauty, Skincare & Health Care"),
     ("home-living", "Home & Living"),
 ]
 
@@ -36,6 +36,7 @@ class Product(models.Model):
     videos = models.JSONField(default=list, blank=True)
 
     is_active = models.BooleanField(default=True, db_index=True)
+    is_featured = models.BooleanField(default=False, db_index=True, help_text="Show in the hero slider of its category page")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
