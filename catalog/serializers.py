@@ -89,5 +89,5 @@ class ProductDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         model = Product
         fields = (
             "slug", "asin", "title", "subtitle", "title_en", "title_ar", "subtitle_en", "subtitle_ar", "brand", "affiliate_link", "affiliate_site",
-            "category_path", "categories", "tags", "sizes", "videos", "variants",
+            "category", "category_path", "categories", "tags", "sizes", "videos", "variants",
         )
