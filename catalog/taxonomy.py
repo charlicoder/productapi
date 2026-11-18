@@ -50,6 +50,21 @@ TAXONOMY = {
 }
 
 
+def row_matches(category, sub, row):
+    """Python twin of sub_query() for a values() row, so counts need only one DB query."""
+    rule = TAXONOMY.get(category, {}).get(sub)
+    if rule is None:
+        return False
+    path = (row.get("category_path") or "").lower()
+    title = ((row.get("title_en") or "") + " " + (row.get("title") or "")).lower()
+    brand = (row.get("brand") or "").lower()
+    return (
+        any(w in path for w in rule.get("path", []))
+        or any(w in title for w in rule.get("title", []))
+        or any(w in brand for w in rule.get("brand", []))
+    )
+
+
 def sub_query(category, sub):
     """Q for one sub-category, or None if unknown."""
     rule = TAXONOMY.get(category, {}).get(sub)

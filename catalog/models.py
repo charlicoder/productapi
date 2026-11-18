@@ -9,6 +9,26 @@ CATEGORY_CHOICES = [
 ]
 
 
+CARD_IMAGE_LIMIT = 8
+
+
+def pick_card_images(variants, limit=CARD_IMAGE_LIMIT):
+    """First image of every variant (for variety), then the remaining ones; de-duplicated."""
+    firsts, rest = [], []
+    for v in variants:
+        imgs = list(v.images.all())
+        if imgs:
+            firsts.append(imgs[0].url)
+            rest.extend(i.url for i in imgs[1:])
+    out = []
+    for u in firsts + rest:
+        if u not in out:
+            out.append(u)
+        if len(out) >= limit:
+            break
+    return out
+
+
 class Product(models.Model):
     """One affiliate product (one Amazon parent/ASIN page)."""
 
@@ -34,6 +54,8 @@ class Product(models.Model):
     sizes = models.JSONField(default=list, blank=True)
     countries = models.JSONField(default=list, blank=True)
     videos = models.JSONField(default=list, blank=True)
+    # Up to 8 image URLs for list cards, precomputed so the list endpoint needs no variant/image queries.
+    card_images = models.JSONField(default=list, blank=True, editable=False)
 
     is_active = models.BooleanField(default=True, db_index=True)
     is_featured = models.BooleanField(default=False, db_index=True, help_text="Show in the hero slider of its category page")
@@ -54,6 +76,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title_en or self.title
+
+    def refresh_card_images(self, limit=CARD_IMAGE_LIMIT):
+        """Recompute `card_images` from the variant tree (first image of each variant first, then the rest)."""
+        variants = self.variants.all()
+        if "variants" not in getattr(self, "_prefetched_objects_cache", {}):
+            variants = variants.prefetch_related("images")
+        self.card_images = pick_card_images(variants, limit)
+        Product.objects.filter(pk=self.pk).update(card_images=self.card_images)
 
 
 class Variant(models.Model):

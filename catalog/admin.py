@@ -151,6 +151,10 @@ class ImageInline(admin.TabularInline):
 
 @admin.register(Variant)
 class VariantAdmin(admin.ModelAdmin):
+    def save_related(self, request, form, formsets, change):
+        super().save_related(request, form, formsets, change)
+        form.instance.product.refresh_card_images()  # images were edited: keep list cards in sync
+
     list_display = ("product", "color", "style", "price", "unavailable")
     search_fields = ("product__title", "color", "asin")
     autocomplete_fields = ("product",)

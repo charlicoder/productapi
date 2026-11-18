@@ -70,6 +70,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,7 +117,14 @@ if os.environ.get("IN_DOCKER") == "1" and DATABASES["default"].get("HOST") in ("
 # Required when connecting through Supabase's transaction pooler (port 6543).
 if os.environ.get("DB_POOLER", "0") == "1":
     DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = True
-    DATABASES["default"]["CONN_MAX_AGE"] = 0
+# Reuse DB connections: opening one (TCP + TLS to a remote DB) costs more than the queries themselves.
+# Safe with a transaction pooler as long as server-side cursors stay disabled. Set DB_CONN_MAX_AGE=0 to opt out.
+DATABASES["default"]["CONN_MAX_AGE"] = int(os.environ.get("DB_CONN_MAX_AGE", "60"))
+
+# Public catalog responses are cached (per worker process) and sent with Cache-Control so browsers/CDNs can reuse them.
+# Admin edits clear the cache (see catalog/signals.py). 0 disables.
+API_CACHE_SECONDS = int(os.environ.get("API_CACHE_SECONDS", "300"))
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "productapi"}}
 
 
 # Password validation

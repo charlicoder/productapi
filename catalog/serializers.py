@@ -1,8 +1,6 @@
 from rest_framework import serializers
 
-from .models import Product, Variant, VariantImage
-
-CARD_IMAGE_LIMIT = 8
+from .models import CARD_IMAGE_LIMIT, Product, Variant, VariantImage, pick_card_images
 
 
 class VariantImageSerializer(serializers.ModelSerializer):
@@ -59,21 +57,9 @@ class ProductListSerializer(LocalizedMixin, serializers.ModelSerializer):
         fields = ("slug", "title", "title_en", "title_ar", "images")
 
     def get_images(self, obj):
-        # Needs prefetch of variants__images. First image of each variant first (variety), then the rest.
-        variants = list(obj.variants.all())
-        firsts, rest = [], []
-        for v in variants:
-            imgs = list(v.images.all())
-            if imgs:
-                firsts.append(imgs[0].url)
-                rest.extend(i.url for i in imgs[1:])
-        out = []
-        for u in firsts + rest:
-            if u not in out:
-                out.append(u)
-            if len(out) >= CARD_IMAGE_LIMIT:
-                break
-        return out
+        if obj.card_images:  # precomputed: no extra queries
+            return obj.card_images[:CARD_IMAGE_LIMIT]
+        return pick_card_images(obj.variants.all(), CARD_IMAGE_LIMIT)  # fallback (needs prefetch to be cheap)
 
 
 class ProductDetailSerializer(LocalizedMixin, serializers.ModelSerializer):

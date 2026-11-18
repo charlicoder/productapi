@@ -110,6 +110,7 @@ def _import_one(data):
                 )
             )
         VariantImage.objects.bulk_create(imgs)
+    product.refresh_card_images()
     return created
 
 

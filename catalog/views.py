@@ -1,19 +1,18 @@
-from django.db.models import Prefetch, Q
+from django.db.models import Prefetch, Q, prefetch_related_objects
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import CATEGORY_CHOICES, Product, Variant
 from .serializers import ProductDetailSerializer, ProductListSerializer
-from .taxonomy import TAXONOMY, sub_query
+from .taxonomy import TAXONOMY, row_matches, sub_query
 
 HERO_SIZE = 5
+_VARIANTS = Prefetch("variants", queryset=Variant.objects.prefetch_related("images"))
 
 
 def _active():
-    return Product.objects.filter(is_active=True).prefetch_related(
-        Prefetch("variants", queryset=Variant.objects.prefetch_related("images"))
-    )
+    return Product.objects.filter(is_active=True)
 
 
 class ProductList(generics.ListAPIView):
@@ -33,33 +32,37 @@ class ProductList(generics.ListAPIView):
                 qs = qs.filter(sub)
         return qs
 
+    def paginate_queryset(self, queryset):
+        page = super().paginate_queryset(queryset)
+        # Cards read the precomputed `card_images`; only products without it need the variant tree.
+        if page:
+            prefetch_related_objects([p for p in page if not p.card_images], _VARIANTS)
+        return page
+
 
 class Hero(APIView):
     """Up to 5 slides for a category page: admin-featured products first, topped up with the newest."""
 
     def get(self, request):
         cat = request.query_params.get("category", "").strip()
-        base = _active().filter(variants__images__isnull=False).distinct()
+        base = _active()
         if cat:
             base = base.filter(category=cat)
-        picked = list(base.filter(is_featured=True)[:HERO_SIZE])
-        if len(picked) < HERO_SIZE:
-            ids = [p.id for p in picked]
-            picked += list(base.exclude(id__in=ids)[: HERO_SIZE - len(picked)])
-        return Response(ProductListSerializer(picked, many=True, context={"request": request}).data)
+        pool = list(base.filter(is_featured=True)[: HERO_SIZE * 2]) + list(base.filter(is_featured=False)[: HERO_SIZE * 2])
+        prefetch_related_objects([p for p in pool if not p.card_images], _VARIANTS)
+        data = ProductListSerializer(pool, many=True, context={"request": request}).data
+        return Response([d for d in data if d["images"]][:HERO_SIZE])
 
 
 class Categories(APIView):
-    """Product counts per category and sub-category, so the storefront can hide empty tabs."""
+    """Product counts per category and sub-category (one query), so the storefront can hide empty tabs."""
 
     def get(self, request):
-        rows = list(Product.objects.filter(is_active=True).values("category", "category_path"))
+        rows = list(_active().values("category", "category_path", "title", "title_en", "brand"))
         out = {}
         for slug, _label in CATEGORY_CHOICES:
-            subs = {}
-            for sub in TAXONOMY.get(slug, {}):
-                subs[sub] = Product.objects.filter(is_active=True, category=slug).filter(sub_query(slug, sub)).count()
-            out[slug] = {"count": sum(1 for r in rows if r["category"] == slug), "subs": subs}
+            mine = [r for r in rows if r["category"] == slug]
+            out[slug] = {"count": len(mine), "subs": {s: sum(1 for r in mine if row_matches(slug, s, r)) for s in TAXONOMY.get(slug, {})}}
         return Response(out)
 
 
@@ -68,4 +71,4 @@ class ProductDetail(generics.RetrieveAPIView):
     lookup_field = "slug"
 
     def get_queryset(self):
-        return _active()
+        return _active().prefetch_related(_VARIANTS)
