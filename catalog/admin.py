@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 from django.urls import path, reverse
 
 from .importer import import_products
-from .models import Product, Variant, VariantImage
+from .models import Product, Subscriber, Variant, VariantImage
 
 
 class ImportForm(forms.Form):
@@ -164,3 +164,21 @@ class VariantAdmin(admin.ModelAdmin):
     def video_preview(self, obj):
         return _video_html(obj.videos)
     inlines = [ImageInline]
+
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ("phone", "country", "language", "is_active", "created_at")
+    list_filter = ("is_active", "country", "language")
+    search_fields = ("phone",)
+    date_hierarchy = "created_at"
+    actions = ["export_phones"]
+
+    @admin.action(description="Export selected phone numbers (one per line)")
+    def export_phones(self, request, queryset):
+        from django.http import HttpResponse
+
+        body = "\n".join(queryset.filter(is_active=True).values_list("phone", flat=True))
+        resp = HttpResponse(body, content_type="text/plain")
+        resp["Content-Disposition"] = 'attachment; filename="subscribers.txt"'
+        return resp

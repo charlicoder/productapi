@@ -1,6 +1,7 @@
 from django.db.models import Prefetch, Q, prefetch_related_objects
 from rest_framework import generics
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle
 from rest_framework.views import APIView
 
 from .models import CATEGORY_CHOICES, Product, Variant
@@ -72,3 +73,26 @@ class ProductDetail(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return _active().prefetch_related(_VARIANTS)
+
+
+class Subscribe(APIView):
+    """POST {country_code, phone, country?, language?} -> 202. Stored asynchronously."""
+
+    throttle_classes = [AnonRateThrottle]
+    authentication_classes = []
+
+    def post(self, request):
+        from . import subscribe
+
+        d = request.data
+        try:
+            phone, dial = subscribe.normalize(str(d.get("country_code", "")), str(d.get("phone", "")))
+        except ValueError as e:
+            return Response({"error": str(e)}, status=400)
+        subscribe.submit(
+            phone, dial,
+            country=str(d.get("country", ""))[:2].upper(),
+            language=str(d.get("language", ""))[:5],
+            source=str(d.get("source", ""))[:40],
+        )
+        return Response({"status": "accepted"}, status=202)

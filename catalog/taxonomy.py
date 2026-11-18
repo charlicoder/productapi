@@ -17,11 +17,18 @@ TAXONOMY = {
         "clothing": {"path": ["dress", "coat", "jacket", "jumpsuit", "hoodie", "sweatshirt", "clothing sets", "pants", "skirt", "tracksuit", "sweatsuit"]},
         "pullovers": {"path": ["pullover"]},
     },
-    "footwear-bags": {
-        "womens-shoes": {"path": ["women > shoes"]},
+    "footwear": {
+        "womens-shoes": {"path": ["women > shoes", "women's shoes"]},
         "sneakers-sports": {"path": ["sneaker", "athletic", "running"]},
         "boots": {"path": ["boots"]},
-        "handbags": {"path": ["handbags"]},
+        "heels-pumps": {"path": ["pumps", "heels"], "title": ["heel", "pump", "stiletto"]},
+        "flats-loafers": {"path": ["flats", "loafer", "oxford", "moccasin", "mules", "clogs", "slip-ons"], "title": ["loafer", "ballet flat"]},
+        "sandals-slippers": {"path": ["sandal", "slipper", "flip flop", "slides"], "title": ["sandal", "slipper", "slide"]},
+    },
+    "handbags": {
+        "tote-shoulder": {"path": ["totes", "shoulder bag", "hobo", "satchel", "top-handle"], "title": ["tote", "shoulder bag", "hobo", "satchel"]},
+        "crossbody": {"path": ["crossbody"], "title": ["crossbody", "cross body"]},
+        "clutches-wallets": {"path": ["clutch", "evening bag", "wristlet", "coin purse"], "title": ["clutch", "wallet", "wristlet"]},
         "luxury-bags": {
             "brand": ["marc jacobs", "kurt geiger", "coach", "michael kors", "kate spade", "gucci", "prada", "louis vuitton", "fossil", "furla", "tory burch", "longchamp", "juicy couture"],
             "title": ["luxury", "designer", "lambskin"],
@@ -29,14 +36,21 @@ TAXONOMY = {
         "travel-bags": {"path": ["luggage", "travel"], "title": ["travel", "duffel", "weekender", "luggage"]},
         "backpacks": {"path": ["backpack"], "title": ["backpack"]},
     },
-    "beauty-health": {
+    "beauty-skincare": {
         "skincare": {"path": ["skin care", "skincare", "face"]},
-        "makeup": {"path": ["makeup", "lipstick", "nail"]},
+        "makeup": {"path": ["makeup", "lipstick"]},
         "hair-care": {"path": ["hair"]},
         "fragrance": {"path": ["fragrance", "perfume"]},
+        "nail-care": {"path": ["nail"]},
+        "bath-body": {"path": ["bath & body", "body care", "soap", "lotion"]},
+    },
+    "health-care": {
         "vitamins-supplements": {"path": ["vitamin", "supplement", "nutrition"]},
-        "personal-care": {"path": ["personal care", "shave", "oral care", "bath & body"]},
-        "wellness": {"path": ["wellness", "massage", "health care", "medical", "fitness"]},
+        "personal-care": {"path": ["health & personal care", "shave", "deodorant", "feminine"]},
+        "oral-care": {"path": ["oral care", "toothbrush", "toothpaste"]},
+        "wellness": {"path": ["wellness", "massage", "relaxation"]},
+        "medical-first-aid": {"path": ["medical", "first aid", "health care", "thermometer", "monitor"]},
+        "fitness-recovery": {"path": ["fitness", "exercise", "yoga", "recovery"]},
     },
     "home-living": {
         "kitchen-dining": {"path": ["kitchen", "dining", "cookware"]},

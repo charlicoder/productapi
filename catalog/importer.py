@@ -25,8 +25,10 @@ def _make_slug(title, asin):
 
 
 _RULES = [
-    ("footwear-bags", ("shoe", "sneaker", "boot", "sandal", "handbag", "bag", "backpack", "luggage", "wallet", "purse")),
-    ("beauty-health", ("beauty", "skin", "makeup", "hair", "fragrance", "perfume", "personal care", "health", "vitamin", "supplement", "wellness")),
+    ("footwear", ("shoe", "sneaker", "boot", "sandal", "slipper", "loafer")),
+    ("handbags", ("handbag", "bag", "backpack", "luggage", "wallet", "purse", "clutch")),
+    ("health-care", ("health", "vitamin", "supplement", "wellness", "medical")),
+    ("beauty-skincare", ("beauty", "skin", "makeup", "hair", "fragrance", "perfume", "personal care", "nail")),
     ("home-living", ("home", "kitchen", "furniture", "bedding", "decor", "garden", "appliance", "lighting")),
     ("apparel", ("clothing", "apparel", "jacket", "dress", "sweat", "shirt", "pants", "coat")),
 ]

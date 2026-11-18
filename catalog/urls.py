@@ -11,5 +11,6 @@ urlpatterns = [
     path("products/", cached(views.ProductList.as_view())),
     path("hero/", cached(views.Hero.as_view())),
     path("categories/", cached(views.Categories.as_view())),
+    path("subscribe/", views.Subscribe.as_view()),
     path("products/<slug:slug>/", cached(views.ProductDetail.as_view())),
 ]

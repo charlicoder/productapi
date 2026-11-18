@@ -3,8 +3,10 @@ from django.db import models
 
 CATEGORY_CHOICES = [
     ("apparel", "Apparel"),
-    ("footwear-bags", "Footwear & Bags"),
-    ("beauty-health", "Beauty, Skincare & Health Care"),
+    ("footwear", "Footwear"),
+    ("handbags", "Handbags"),
+    ("beauty-skincare", "Beauty & Skincare"),
+    ("health-care", "Health Care"),
     ("home-living", "Home & Living"),
 ]
 
@@ -123,3 +125,21 @@ class VariantImage(models.Model):
 
     def __str__(self):
         return f"{self.variant_id}#{self.position}"
+
+
+class Subscriber(models.Model):
+    """A visitor who asked to be messaged (WhatsApp/SMS) about new products. Phone numbers only."""
+
+    phone = models.CharField(max_length=20, unique=True, help_text="E.164, e.g. +971501234567")
+    country_code = models.CharField(max_length=6, help_text='Dial code, e.g. "+971"')
+    country = models.CharField(max_length=2, blank=True, help_text="ISO country the visitor picked")
+    language = models.CharField(max_length=5, blank=True)
+    source = models.CharField(max_length=40, blank=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.phone
