@@ -47,9 +47,7 @@ TAXONOMY = {
     "health-care": {
         "vitamins-supplements": {"path": ["vitamin", "supplement", "nutrition"]},
         "personal-care": {"path": ["health & personal care", "shave", "deodorant", "feminine"]},
-        "oral-care": {"path": ["oral care", "toothbrush", "toothpaste"]},
         "wellness": {"path": ["wellness", "massage", "relaxation"]},
-        "medical-first-aid": {"path": ["medical", "first aid", "health care", "thermometer", "monitor"]},
         "fitness-recovery": {"path": ["fitness", "exercise", "yoga", "recovery"]},
     },
     "home-living": {
